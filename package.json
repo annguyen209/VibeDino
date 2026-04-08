@@ -1,0 +1,61 @@
+{
+  "name": "vibedino",
+  "version": "0.1.0",
+  "description": "Terminal T-Rex runner game for when AI tools run out of tokens",
+  "type": "module",
+  "bin": {
+    "vibedino": "./bin/vibedino.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    "bin/",
+    "integrations/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/main.ts",
+    "start": "node bin/vibedino.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "keywords": [
+    "game",
+    "terminal",
+    "cli",
+    "dino",
+    "ascii",
+    "claude",
+    "copilot",
+    "offline",
+    "fun"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/annguyen209/VibeDino.git"
+  },
+  "homepage": "https://github.com/annguyen209/VibeDino",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}

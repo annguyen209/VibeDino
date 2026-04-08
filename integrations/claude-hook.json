@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostToolUseFailure": [
+      {
+        "matcher": "rate_limit|token_limit|quota_exceeded|overloaded",
+        "command": "npx vibedino --trigger claude --reason \"Token limit reached\"",
+        "timeout": 300000
+      }
+    ]
+  }
+}

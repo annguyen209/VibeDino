@@ -1,0 +1,12 @@
+{
+  "name": "vibedino",
+  "version": "0.1.0",
+  "description": "Play dino runner when rate limited",
+  "hooks": {
+    "onError": {
+      "match": ["rate_limit", "token_exhausted", "429"],
+      "action": "exec",
+      "command": "npx vibedino --trigger copilot --reason \"Rate limited\""
+    }
+  }
+}
