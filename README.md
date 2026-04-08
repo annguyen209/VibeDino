@@ -121,9 +121,18 @@ The game starts with a "Regenerating tokens..." progress bar, then throws increa
 
 ## AI Tool Integration
 
-### Claude Code
+### Auto-Install (Recommended)
 
-Auto-launch VibeDino when Claude Code hits a token limit:
+When you install VibeDino globally, it **auto-detects** Claude Code and Copilot CLI and installs hooks automatically:
+
+```bash
+npm install -g vibedino
+# 🦕 VibeDino hooks installed! Play when your AI hits a token limit.
+```
+
+No config editing needed. If you install later or want manual control, use the commands below.
+
+### Claude Code
 
 ```bash
 vibedino --install claude
