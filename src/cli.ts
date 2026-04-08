@@ -2,6 +2,7 @@ import { startGame } from './index.js';
 import { getHighScore, getTopScores, resetScores } from './storage/ScoreStore.js';
 import { installClaudeHook, uninstallClaudeHook } from './integrations/claudeCode.js';
 import { installCopilotPlugin, uninstallCopilotPlugin } from './integrations/copilotCli.js';
+import { installClaudeCommand, uninstallClaudeCommand } from './integrations/commands.js';
 import type { StartGameOptions } from './integrations/types.js';
 
 function printHelp(): void {
@@ -82,14 +83,14 @@ export async function cli(argv: string[]): Promise<void> {
   }
 
   if (args.install) {
-    if (args.install === 'claude') installClaudeHook();
+    if (args.install === 'claude') { installClaudeHook(); installClaudeCommand(); }
     else if (args.install === 'copilot') installCopilotPlugin();
     else console.log('  Unknown target. Use: claude, copilot');
     process.exit(0);
   }
 
   if (args.uninstall) {
-    if (args.uninstall === 'claude') uninstallClaudeHook();
+    if (args.uninstall === 'claude') { uninstallClaudeHook(); uninstallClaudeCommand(); }
     else if (args.uninstall === 'copilot') uninstallCopilotPlugin();
     else console.log('  Unknown target. Use: claude, copilot');
     process.exit(0);

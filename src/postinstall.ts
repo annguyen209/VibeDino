@@ -3,6 +3,7 @@ import { join } from 'path';
 import { homedir } from 'os';
 import { installClaudeHook } from './integrations/claudeCode.js';
 import { installCopilotPlugin } from './integrations/copilotCli.js';
+import { installClaudeCommand } from './integrations/commands.js';
 
 // Only run for global installs (not when used as a dependency)
 const isGlobal = process.env.npm_config_global === 'true' ||
@@ -18,9 +19,10 @@ if (isGlobal) {
   if (existsSync(claudeDir)) {
     try {
       installClaudeHook(home);
+      installClaudeCommand();
       installed = true;
     } catch {
-      // Silent fail — don't break install
+      // Silent fail
     }
   }
 
@@ -36,7 +38,7 @@ if (isGlobal) {
   }
 
   if (installed) {
-    console.log('\n  🦕 VibeDino hooks installed! Play when your AI hits a token limit.\n');
+    console.log('\n  🦕 VibeDino installed! Hooks + /dino command ready.\n');
   } else {
     console.log('\n  🦕 VibeDino installed! Run: vibedino --install claude (or copilot)\n');
   }
